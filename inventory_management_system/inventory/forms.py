@@ -1,10 +1,6 @@
 from django import forms
 from .models import *
 
-class LaptopForm(forms.ModelForm):
-    class Meta:
-        model = Laptops
-        fields = ('type', 'price', 'status', 'issues')
 
 
 class DesktopForm(forms.ModelForm):

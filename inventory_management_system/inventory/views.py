@@ -10,13 +10,6 @@ from .forms import *
 def index(request):
     return render(request, 'inv/index.html')
 
-def display_laptops(request):
-    items = Laptops.objects.all()
-    context = {
-        'items': items,
-        'header': 'Laptops',
-    }
-    return render(request, 'inv/index.html', context)
 
 
 def display_desktops(request):
@@ -49,8 +42,6 @@ def add_item(request, cls):
         return render(request, 'inv/add_new.html', {'form' : form})
 
 
-def add_laptop(request):
-    return add_item(request, LaptopForm)
 
 
 def add_desktop(request):
@@ -76,8 +67,6 @@ def edit_item(request, pk, model, cls):
 
 
 
-def edit_laptop(request, pk):
-    return edit_item(request, pk, Laptops, LaptopForm)
 
 
 def edit_desktop(request, pk):
@@ -87,19 +76,6 @@ def edit_desktop(request, pk):
 def edit_mobile(request, pk):
     return edit_item(request, pk, Mobiles, MobileForm)
 
-
-def delete_laptop(request, pk):
-
-    template = 'inv/index.html'
-    Laptops.objects.filter(id=pk).delete()
-
-    items = Laptops.objects.all()
-
-    context = {
-        'items': items,
-    }
-
-    return render(request, template, context)
 
 
 def delete_desktop(request, pk):
